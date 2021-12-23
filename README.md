@@ -1,6 +1,7 @@
 # todo
 
-A new Flutter project.
+Todo-app
+#Bloc pattern
 
 ## Getting Started
 
