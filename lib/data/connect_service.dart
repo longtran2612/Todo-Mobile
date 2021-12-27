@@ -1,0 +1,158 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
+import 'package:dio_http_cache/dio_http_cache.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:todo/data/interceptor/retry_interceptor.dart';
+import 'package:todo/data/providers/auth_provider.dart';
+import 'package:todo/utils/storage_service.dart';
+
+import 'interceptor/dio_connectivity_request_retrier.dart';
+
+//Dio api service
+class ConnectService {
+  static var baseUrl = dotenv.env['BASE_URL'].toString();
+
+  static final ConnectService _instance = ConnectService._internal();
+  factory ConnectService() => _instance;
+
+  static Dio dio = Dio();
+  CancelToken cancelToken = CancelToken();
+  late DioCacheManager _dioCacheManager;
+
+  DioCacheManager get dioCacheManager {
+    _dioCacheManager = DioCacheManager(CacheConfig(baseUrl: baseUrl));
+    return _dioCacheManager;
+  }
+
+  ConnectService._internal() {
+    BaseOptions options = BaseOptions(
+      baseUrl: baseUrl,
+      contentType: 'application/json; charset=utf-8',
+      connectTimeout: 3000,
+      receiveTimeout: 5000,
+      responseType: ResponseType.json,
+    );
+
+    dio = Dio(options);
+    dio.interceptors.add(RetryOnConnectionChangeInterceptor(
+      authProvider: AuthProvider(),
+      requestRetrier: DioConnectivityRequestRetrier(
+        dio: dio,
+        connectivity: Connectivity(),
+      ),
+    ));
+    dio.interceptors.add(dioCacheManager.interceptor);
+  }
+
+  ///token
+  Map<String, dynamic>? getAuthorizationHeader() {
+    var headers;
+    var token = LocalStorage.getToken()?.accessToken.toString();
+    if (token != null) {
+      headers = {
+        'Authorization': 'Bearer $token',
+      };
+    }
+    return headers;
+  }
+
+  /// restful get
+  Future get(String path, {dynamic params, Options? options}) async {
+    Options requestOptions =
+        options ?? buildCacheOptions(Duration(days: 3), forceRefresh: true);
+
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+    var response = await dio.get(path,
+        queryParameters: params,
+        options: requestOptions,
+        cancelToken: cancelToken);
+    return response;
+  }
+
+  /// restful post
+  Future post(String path, {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+    var response = await dio.post(path,
+        data: params, options: requestOptions, cancelToken: cancelToken);
+    return response;
+  }
+
+  /// restful put
+  Future put(String path,
+      {dynamic params, dynamic? queryParams, Options? options}) async {
+    Options requestOptions = options ?? Options();
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+    var response = await dio.put(path,
+        data: params,
+        queryParameters: queryParams,
+        options: requestOptions,
+        cancelToken: cancelToken);
+    return response;
+  }
+
+  /// restful patch
+  Future patch(String path, {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+
+    var response = await dio.patch(path,
+        data: params, options: requestOptions, cancelToken: cancelToken);
+
+    return response;
+  }
+
+  /// restful delete
+  Future delete(String path, {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+    var response = await dio.delete(path,
+        data: params, options: requestOptions, cancelToken: cancelToken);
+    return response;
+  }
+
+  /// restful post
+  Future postForm(String path, {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+
+    Map<String, dynamic>? _authorization = getAuthorizationHeader();
+    if (_authorization != null) {
+      requestOptions = requestOptions.copyWith(headers: _authorization);
+    }
+    var response = await dio.post(path,
+        data: FormData.fromMap(params),
+        options: requestOptions,
+        cancelToken: cancelToken);
+    return response;
+  }
+
+  Future postAuth(String path, {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+    var response = await dio.post(path, data: params, options: requestOptions);
+    return response;
+  }
+
+  Future postRefreshToken(String path,
+      {dynamic params, Options? options}) async {
+    Options requestOptions = options ?? Options();
+    var response = await dio.post(path, data: params, options: requestOptions);
+    return response;
+  }
+}
