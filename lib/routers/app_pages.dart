@@ -1,4 +1,9 @@
 import 'package:get/get.dart';
+import 'package:todo/modules/auth/auth.dart';
+import 'package:todo/modules/login/login.dart';
+import 'package:todo/modules/register/register.dart';
+import 'package:todo/utils/app_binding.dart';
+import 'package:todo/welcome/welcome_screen.dart';
 
 import 'app_routers.dart';
 
@@ -18,13 +23,6 @@ abstract class AppPages {
     GetPage(
       name: Routes.AUTH,
       page: () => AuthScreen(),
-      binding: AuthBinding(),
-    ),
-    GetPage(
-      name: Routes.OTP,
-      page: () => OtpScreen(
-        phoneNumber: '',
-      ),
       binding: AuthBinding(),
     ),
     GetPage(

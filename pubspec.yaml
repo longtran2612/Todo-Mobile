@@ -52,6 +52,12 @@ dependencies:
 
   awesome_notifications: ^0.6.18+2
 
+
+  #otp
+  timer_button: ^2.0.0
+  pinput: ^1.2.2
+  country_code_picker: ^2.0.2
+  
   #storage
   shared_preferences: ^2.0.9
 
