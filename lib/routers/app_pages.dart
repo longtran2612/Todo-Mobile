@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:todo/modules/auth/auth.dart';
-import 'package:todo/modules/login/login.dart';
-import 'package:todo/modules/register/register.dart';
+import 'package:todo/modules/auth/login/login.dart';
+import 'package:todo/modules/auth/register/register.dart';
+import 'package:todo/modules/home/home_binding.dart';
+import 'package:todo/modules/home/home_screen.dart';
 import 'package:todo/utils/app_binding.dart';
 import 'package:todo/welcome/welcome_screen.dart';
 

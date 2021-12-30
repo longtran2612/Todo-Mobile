@@ -10,7 +10,8 @@ import 'interceptor/dio_connectivity_request_retrier.dart';
 
 //Dio api service
 class ConnectService {
-  static var baseUrl = dotenv.env['BASE_URL'].toString();
+  //static var baseUrl = dotenv.env['BASE_URL'].toString();
+  static var baseUrl = "http://10.0.2.2:8000/";
 
   static final ConnectService _instance = ConnectService._internal();
   factory ConnectService() => _instance;
