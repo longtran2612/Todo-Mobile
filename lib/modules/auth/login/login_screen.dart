@@ -112,7 +112,7 @@ class LoginScreen extends GetView<LoginController> {
                 //Check
                 AlreadyHaveAnAccountCheck(press: () => Get.offNamed('/auth')),
                 SizedBox(height: size.height * 0.03),
-                GestureDetector(onTap: () {}),
+                //GestureDetector(onTap: () {}),
               ],
             ),
           ),

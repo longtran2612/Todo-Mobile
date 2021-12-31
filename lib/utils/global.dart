@@ -9,7 +9,7 @@ import 'package:todo/utils/storage_service.dart';
 
 class Global {
   static Future init() async {
-    //await dotenv.load(fileName: ".env"); // dotenv
+    await dotenv.load(fileName: ".env"); // dotenv
     await LocalStorage.init();
     await Firebase.initializeApp(); //firebase auth
     WidgetsFlutterBinding.ensureInitialized();

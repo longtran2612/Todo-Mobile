@@ -9,7 +9,7 @@ import '../connect_service.dart';
 class AuthProvider {
   //end point
   static const String checkURL = 'auth/check';
-  static const String loginURL = 'auth/signin';
+  static const String loginURL = 'auth/login';
   static const String resetPasswordURL = 'auth/changePassword';
   static const String registerURL = 'auth/register';
   static const String logoutURL = 'auth/signout';
