@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:todo/themes/theme.dart';
+import 'package:todo/welcome/welcome_controller.dart';
 import 'package:todo/widgets/widgets.dart';
 
 //Welcome screen
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key? key}) : super(key: key);
-
+  final controller = Get.put(WelcomeController());
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -53,17 +54,17 @@ class WelcomeScreen extends StatelessWidget {
                   onPressed: () => Get.toNamed('/auth'),
                 ),
                 //Choose language button
-                // TextButton(
-                //   onPressed: () {
-                //     controller.buildLanguageDialog(context);
-                //   },
-                //   child: Text(
-                //     'changelang'.tr,
-                //     style: const TextStyle(
-                //         color: AppColors.light,
-                //         decoration: TextDecoration.underline),
-                //   ),
-                // ),
+                TextButton(
+                  onPressed: () {
+                    controller.buildLanguageDialog(context);
+                  },
+                  child: Text(
+                    'changelang'.tr,
+                    style: const TextStyle(
+                        color: AppColors.light,
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
               ],
             ),
           ),
