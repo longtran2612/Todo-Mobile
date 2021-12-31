@@ -1,7 +1,7 @@
 # todo
 
 Todo-app
-#Bloc pattern
+GetX, Firebase authentication
 
 ## Getting Started
 
