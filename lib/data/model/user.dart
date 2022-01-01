@@ -39,5 +39,3 @@ class User {
         "image": image,
       };
 }
-
-enum Gender { male, female }

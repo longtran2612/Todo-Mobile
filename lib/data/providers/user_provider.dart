@@ -8,7 +8,6 @@ import '../connect_service.dart';
 
 class ProfileProvider {
   static const String userURL = 'users';
-  static const String searchURL = '$userURL/search';
   static const String suggestURL = '$userURL/suggest';
   static const String userPhoneURL = '$userURL/phone=';
   static const String updateURL = '$userURL/update';

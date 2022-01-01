@@ -1,16 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:todo/modules/home/home_controller.dart';
+import 'package:todo/modules/home/profile/profile_controller.dart';
+import 'package:todo/themes/theme.dart';
+import 'package:todo/widgets/custom/full_photo.dart';
 
-class SideBar extends StatelessWidget {
+class ProfileDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomeController>();
+    final controller = Get.find<ProfileController>();
     return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
       child: ListView(
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
@@ -21,19 +23,9 @@ class SideBar extends StatelessWidget {
             ),
             child: Text('Profile'),
           ),
-          ListTile(
-            title: const Text('Name'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          Text("Name"),
-          Text("Phone"),
-          Text("Email"),
-          Text("Address"),
+          buildInfoField("Phone", controller.currentUser.value.phone),
+          buildInfoField("E-mail", controller.currentUser.value.email),
+          buildInfoField("Address", controller.currentUser.value.address),
           TextButton(
               onPressed: () => Get.dialog(
                     AlertDialog(
@@ -72,6 +64,42 @@ class SideBar extends StatelessWidget {
                   ),
               child: Text("logout"))
         ],
+      ),
+    );
+  }
+
+  Widget buildInfoField(String labelText, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          primary: Colors.lightBlue,
+          padding: const EdgeInsets.only(left: 15, top: 20, bottom: 20),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          backgroundColor:
+              Get.isDarkMode ? Colors.grey.shade900 : const Color(0xFFF5F6F9),
+        ),
+        onPressed: () {},
+        child: Row(
+          children: [
+            SizedBox(
+              width: 100,
+              child: Text(
+                labelText,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Get.isDarkMode ? Colors.white : Colors.black38),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
