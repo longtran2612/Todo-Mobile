@@ -19,7 +19,7 @@ class Background extends StatelessWidget {
                     Color.fromRGBO(38, 43, 102, 1),
                   ]
                 : <Color>[
-                    Color.fromRGBO(33, 150, 243, 1),
+                    Color.fromRGBO(255, 134, 189, 1),
                     Colors.indigo,
                   ],
           ),

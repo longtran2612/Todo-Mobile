@@ -21,10 +21,10 @@ class LoginScreen extends GetView<LoginController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 //image
-                SvgPicture.asset(
-                  'assets/icons/logo.svg',
+                Image.asset(
+                  'assets/icons/logo.png',
                   width: size.width * 0.3,
-                  color: AppColors.light,
+                  //color: AppColors.light,
                 ),
                 SizedBox(height: size.height * 0.05),
                 // Container(

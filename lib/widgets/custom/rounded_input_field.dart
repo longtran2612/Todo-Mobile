@@ -48,11 +48,11 @@ class RoundedInputField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: margin ?? const EdgeInsets.symmetric(vertical: 10),
-      padding: padding ?? const EdgeInsets.symmetric(horizontal: 20),
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 17),
       width: sizeInput ?? size.width * 0.8,
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: border ?? BorderRadius.circular(29),
+        borderRadius: border ?? BorderRadius.circular(25),
       ),
       child: TextFormField(
         controller: controller,

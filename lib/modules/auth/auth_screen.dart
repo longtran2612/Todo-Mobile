@@ -29,6 +29,12 @@ class AuthScreen extends GetView<AuthController> {
                   ),
                 ),
                 SizedBox(height: size.height * 0.1),
+                Image.asset(
+                  'assets/icons/logo.png',
+                  height: size.height * 0.2,
+                  width: size.height * 0.2,
+                ),
+                SizedBox(height: size.height * 0.1),
                 Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.only(top: 5),

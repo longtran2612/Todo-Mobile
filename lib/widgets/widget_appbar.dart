@@ -17,7 +17,7 @@ class WidgetAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: blackButton ?? true,
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.pinkAccent,
       elevation: 0,
       shadowColor: Colors.transparent,
       iconTheme: const IconThemeData(color: Colors.white),
@@ -32,7 +32,7 @@ class WidgetAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
           gradient: LinearGradient(
-            colors: <Color>[Color.fromRGBO(33, 150, 243, 1), Colors.indigo],
+            colors: <Color>[Color.fromRGBO(255, 131, 251, 1), Colors.indigo],
           ),
         ),
       ),

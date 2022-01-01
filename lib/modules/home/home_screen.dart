@@ -10,6 +10,7 @@ import 'package:todo/widgets/widgets.dart';
 class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Todo App")), drawer: SideBar());
+    return Scaffold(
+        appBar: WidgetAppBar(title: 'personal'.tr), drawer: SideBar());
   }
 }

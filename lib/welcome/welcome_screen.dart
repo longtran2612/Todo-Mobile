@@ -21,17 +21,17 @@ class WelcomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
-                  'WELCOME TO VALO',
+                  'Hi! Todo app',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 24,
+                    fontSize: 30,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
                 SizedBox(height: size.height * 0.1),
-                SvgPicture.asset(
-                  'assets/images/banner_mockup.svg',
+                Image.asset(
+                  'assets/icons/logo.png',
                   height: size.height * 0.2,
                   width: size.height * 0.2,
                 ),
