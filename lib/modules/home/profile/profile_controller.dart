@@ -18,6 +18,7 @@ class ProfileController extends GetxController {
   final TextEditingController inputName = TextEditingController();
   // final TextEditingController inputPhone = TextEditingController();
   final TextEditingController inputEmail = TextEditingController();
+  final TextEditingController inputAdress = TextEditingController();
   var isLoading = false.obs;
   //image
   final ImagePicker _picker = ImagePicker();

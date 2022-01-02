@@ -17,8 +17,6 @@ const Map<String, String> vi = {
   'editinformation': 'Sửa thông tin',
   'version': 'Phiên bản',
 
-  'importcontact': 'Tìm bạn từ danh bạ',
-
   'submit': 'Xác nhận',
   'enterphonenumber': 'Nhập số điện thoại',
   'authTitle': 'Xác thực số điện thoại',
@@ -27,15 +25,11 @@ const Map<String, String> vi = {
   'sendOTP': 'Gửi tin nhắn xác thực',
   'resendOTP': 'Gửi lại mã xác thực',
   'loading': 'Đang xử lý...',
-  // 'en': 'Tiếng Anh',
-  // 'vi': 'Tiếng Việt',
 
   'signin': 'Đăng nhập',
   'signup': 'Đăng ký',
   'logout': 'Đăng xuất',
   'donthaveaccount': 'Không có tài khoản? ',
   'haveaccount': 'Đã có tài khoản? ',
-  'chat': 'Tin nhắn',
-  'contact': 'Bạn bè',
   'personal': 'Cá nhân',
 };

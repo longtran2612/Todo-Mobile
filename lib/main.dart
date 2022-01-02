@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:todo/lang/translation_service.dart';
 import 'package:todo/routers/app_pages.dart';
 import 'package:todo/routers/app_routers.dart';
 import 'package:todo/themes/theme.dart';
@@ -20,8 +21,11 @@ class MyApp extends StatelessWidget {
         statusBarColor: Colors.orangeAccent,
         systemNavigationBarColor: Colors.orangeAccent));
     return GetMaterialApp(
-      title: 'todo app',
+      title: 'Todo app',
       debugShowCheckedModeBanner: false,
+      translations: TranslationService(),
+      locale: TranslationService.locale,
+      fallbackLocale: TranslationService.fallbackLocale,
       themeMode: LocalStorage().getThemeMode(),
       theme: AppTheme.light, //theme
       darkTheme: AppTheme.dark,

@@ -4,6 +4,8 @@ import 'package:todo/modules/auth/login/login.dart';
 import 'package:todo/modules/auth/register/register.dart';
 import 'package:todo/modules/home/home_binding.dart';
 import 'package:todo/modules/home/home_screen.dart';
+import 'package:todo/modules/home/setting/setting_binding.dart';
+import 'package:todo/modules/home/setting/setting_screen.dart';
 import 'package:todo/utils/app_binding.dart';
 import 'package:todo/welcome/welcome_screen.dart';
 
@@ -38,6 +40,11 @@ abstract class AppPages {
         numberPhone: '',
       ),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: Routes.SETTING,
+      page: () => SettingScreen(),
+      binding: SettingBinding(),
     ),
   ];
 }

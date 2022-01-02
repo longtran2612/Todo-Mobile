@@ -6,6 +6,7 @@ class WelcomeController extends GetxController {
   final List locale = [
     {'name': 'English', 'locale': const Locale('en', 'US')},
     {'name': 'Vietnamese', 'locale': const Locale('vi', 'VN')},
+    {'name': 'japanese', 'locale': const Locale('jp', 'JP')},
   ];
 
   //Get language

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:todo/data/model/auth.dart';
@@ -92,5 +94,10 @@ class LocalStorage {
 
   void saveThemeMode(bool isDarkMode) {
     _pref.setBool('isDarkMode', isDarkMode);
+  }
+
+  void changeThemeMode() {
+    Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
+    saveThemeMode(!isSavedDarkMode());
   }
 }
