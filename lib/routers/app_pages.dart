@@ -20,10 +20,7 @@ abstract class AppPages {
       binding: AppBinding(),
     ),
     GetPage(
-      name: Routes.HOME,
-      page: () => HomeScreen(),
-      binding: HomeBinding(),
-    ),
+        name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding()),
     GetPage(
       name: Routes.AUTH,
       page: () => AuthScreen(),
