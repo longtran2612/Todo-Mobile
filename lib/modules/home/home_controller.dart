@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
@@ -57,7 +58,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    //  loadTodos();
+    loadTodos();
     super.onInit();
   }
 
@@ -78,15 +79,13 @@ class HomeController extends GetxController {
       print(respones);
   }
 
-  // Future loadTodos() async {
-  //   final response =
-  //       await todoProvider.getTodoByPhone(LocalStorage.getUser()!.phone);
-  //   // if (response.ok) {
-  //   //   for (var item in response.data!) {
-  //   //     todos.add(item);
-  //   //   }
-  //   // } else {
-  //   //   print(response);
-  //   // }
-  // }
+  Future loadTodos() async {
+    //todos.clear();
+    final response =
+        await todoProvider.fetchPost(LocalStorage.getUser()!.phone);
+    for (var items in response) {
+      todos.add(items);
+    }
+    print(todos);
+  }
 }
